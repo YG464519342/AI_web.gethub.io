@@ -1,0 +1,213 @@
+/* 趣味答题平台 - 3D黏土风格自定义样式 */
+
+/* ========== CSS变量定义 ========== */
+:root {
+  /* 黏土风格变量 */
+  --clay-radius: 20px;
+  --clay-border: 3px;
+  --clay-shadow-inner: inset -2px -2px 8px rgba(0, 0, 0, 0.1);
+  --clay-shadow-outer: 4px 4px 12px rgba(0, 0, 0, 0.15);
+  --clay-shadow-hover: 6px 6px 16px rgba(0, 0, 0, 0.2);
+
+  /* 色彩变量 */
+  --color-primary: #4F46E5;
+  --color-secondary: #818CF8;
+  --color-cta: #F97316;
+  --color-bg: #EEF2FF;
+  --color-text: #1E1B4B;
+  --color-border: #C7D2FE;
+
+  /* 动画变量 */
+  --bounce-timing: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --soft-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== 字体设置 ========== */
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+/* ========== 黏土卡片样式 ========== */
+.clay-card {
+  border-radius: var(--clay-radius);
+  border: var(--clay-border) solid var(--color-border);
+  box-shadow: var(--clay-shadow-inner), var(--clay-shadow-outer);
+  transition: all 300ms var(--soft-timing);
+  position: relative;
+  overflow: hidden;
+}
+
+.clay-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+  border-radius: var(--clay-radius) var(--clay-radius) 0 0;
+  pointer-events: none;
+}
+
+.clay-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--clay-shadow-inner), var(--clay-shadow-hover);
+}
+
+.clay-card:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* ========== 黏土按钮样式 ========== */
+.clay-button {
+  border-radius: var(--clay-radius);
+  border: var(--clay-border) solid rgba(0, 0, 0, 0.1);
+  box-shadow:
+    inset 0 -2px 8px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(249, 115, 22, 0.3);
+  background: linear-gradient(135deg, #FB923C 0%, #F97316 100%);
+  padding: 1rem 2rem;
+  font-weight: 600;
+  color: white;
+  transition: all 200ms var(--bounce-timing);
+  cursor: pointer;
+  display: inline-block;
+}
+
+.clay-button:hover {
+  transform: scale(1.05);
+  box-shadow:
+    inset 0 -2px 8px rgba(0, 0, 0, 0.15),
+    0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+.clay-button:active {
+  transform: scale(0.95);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(249, 115, 22, 0.2);
+}
+
+.clay-button:focus {
+  outline: 3px solid #F97316;
+  outline-offset: 2px;
+}
+
+/* ========== 3D深度效果 ========== */
+.clay-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.clay-3d-inner {
+  transform: translateZ(20px);
+  transition: transform 300ms var(--soft-timing);
+}
+
+.clay-card:hover .clay-3d-inner {
+  transform: translateZ(30px) rotateX(2deg);
+}
+
+/* ========== 自定义动画 ========== */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s var(--bounce-timing);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* ========== 可访问性增强 ========== */
+.clay-card:focus {
+  outline: 3px solid #F97316;
+  outline-offset: 2px;
+}
+
+/* 减少动画模式 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== 响应式优化 ========== */
+@media (max-width: 768px) {
+  :root {
+    --clay-radius: 16px;
+    --clay-border: 2px;
+  }
+
+  .clay-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ========== 性能优化 ========== */
+.clay-card,
+.clay-button {
+  will-change: transform;
+}
+
+/* ========== 平滑滚动 ========== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== 选择文本样式 ========== */
+::selection {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--color-secondary);
+  color: white;
+}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="趣味答题平台 - 让学习变得像玩游戏一样有趣!面向儿童和青少年的互动学习平台。">
+  <meta name="keywords" content="答题平台,儿童学习,趣味教育,在线答题,学习游戏">
+  <title>趣味答题平台 - 让学习变得更有趣!</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 自定义CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-indigo-50">
+
+  <!-- Hero区域 -->
+  <section id="hero" class="hero min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-50">
+    <div class="container mx-auto px-4 text-center z-10">
+      <h1 id="hero-heading" class="text-5xl md:text-7xl font-bold text-indigo-900 mb-6 animate-bounce-in">
+        🎯 趣味答题平台
+      </h1>
+      <p class="text-xl md:text-2xl text-indigo-700 mb-8">
+        让学习变得像玩游戏一样有趣!
+      </p>
+      <button class="clay-button text-lg md:text-xl px-8 py-4 text-white font-semibold" aria-label="立即开始答题" onclick="document.getElementById('subjects').scrollIntoView({behavior: 'smooth'})">
+        立即开始答题 →
+      </button>
+    </div>
+  </section>
+
+  <!-- 题目类型目录 -->
+  <section id="subjects" class="py-16 px-4 bg-indigo-50">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-4xl font-bold text-center mb-12 text-indigo-900">
+        选择你的挑战
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 数学卡片 -->
+        <a href="quiz.html?subject=math" class="clay-card p-6 cursor-pointer bg-gradient-to-br from-pink-200 to-blue-200 relative overflow-hidden block transition-transform hover:scale-105" tabindex="0" role="button" aria-label="开始数学答题挑战">
+          <div class="text-6xl mb-4" aria-hidden="true">🔢</div>
+          <h3 class="text-2xl font-bold text-indigo-900 mb-2">数学</h3>
+          <p class="text-indigo-700">挑战你的计算能力</p>
+          <div class="mt-4 text-sm text-indigo-600">
+            已有 <span class="font-bold">1,234</span> 人参与
+          </div>
+        </a>
+
+        <!-- 语文卡片 -->
+        <a href="quiz.html?subject=math" class="clay-card p-6 cursor-pointer bg-gradient-to-br from-green-200 to-purple-200 relative overflow-hidden block transition-transform hover:scale-105" tabindex="0" role="button" aria-label="开始语文答题挑战">
+          <div class="text-6xl mb-4" aria-hidden="true">📚</div>
+          <h3 class="text-2xl font-bold text-indigo-900 mb-2">语文</h3>
+          <p class="text-indigo-700">提升阅读理解能力</p>
+          <div class="mt-4 text-sm text-indigo-600">
+            已有 <span class="font-bold">987</span> 人参与
+          </div>
+        </a>
+
+        <!-- 英语卡片 -->
+        <a href="quiz.html?subject=math" class="clay-card p-6 cursor-pointer bg-gradient-to-br from-blue-200 to-green-200 relative overflow-hidden block transition-transform hover:scale-105" tabindex="0" role="button" aria-label="开始英语答题挑战">
+          <div class="text-6xl mb-4" aria-hidden="true">🌍</div>
+          <h3 class="text-2xl font-bold text-indigo-900 mb-2">英语</h3>
+          <p class="text-indigo-700">掌握英语词汇</p>
+          <div class="mt-4 text-sm text-indigo-600">
+            已有 <span class="font-bold">1,456</span> 人参与
+          </div>
+        </a>
+
+        <!-- 科学卡片 -->
+        <a href="quiz.html?subject=math" class="clay-card p-6 cursor-pointer bg-gradient-to-br from-purple-200 to-pink-200 relative overflow-hidden block transition-transform hover:scale-105" tabindex="0" role="button" aria-label="开始科学答题挑战">
+          <div class="text-6xl mb-4" aria-hidden="true">🔬</div>
+          <h3 class="text-2xl font-bold text-indigo-900 mb-2">科学</h3>
+          <p class="text-indigo-700">探索科学奥秘</p>
+          <div class="mt-4 text-sm text-indigo-600">
+            已有 <span class="font-bold">765</span> 人参与
+          </div>
+        </a>
+
+        <!-- 历史卡片 -->
+        <a href="quiz.html?subject=math" class="clay-card p-6 cursor-pointer bg-gradient-to-br from-yellow-200 to-orange-200 relative overflow-hidden block transition-transform hover:scale-105" tabindex="0" role="button" aria-label="开始历史答题挑战">
+          <div class="text-6xl mb-4" aria-hidden="true">🏛️</div>
+          <h3 class="text-2xl font-bold text-indigo-900 mb-2">历史</h3>
+          <p class="text-indigo-700">了解历史故事</p>
+          <div class="mt-4 text-sm text-indigo-600">
+            已有 <span class="font-bold">543</span> 人参与
+          </div>
+        </a>
+
+        <!-- 地理卡片 -->
+        <a href="quiz.html?subject=math" class="clay-card p-6 cursor-pointer bg-gradient-to-br from-teal-200 to-cyan-200 relative overflow-hidden block transition-transform hover:scale-105" tabindex="0" role="button" aria-label="开始地理答题挑战">
+          <div class="text-6xl mb-4" aria-hidden="true">🗺️</div>
+          <h3 class="text-2xl font-bold text-indigo-900 mb-2">地理</h3>
+          <p class="text-indigo-700">认识世界地理</p>
+          <div class="mt-4 text-sm text-indigo-600">
+            已有 <span class="font-bold">678</span> 人参与
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 答题进度演示 -->
+  <section id="progress" class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl font-bold text-center mb-12 text-indigo-900">
+        你的学习旅程
+      </h2>
+
+      <div class="clay-card p-8 bg-white">
+        <!-- 进度条 -->
+        <div class="relative h-12 bg-indigo-100 rounded-full overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-1000 ease-out progress-fill"
+               style="width: 0%;" data-progress="65" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="text-white font-bold text-lg z-10">65% 完成</span>
+          </div>
+        </div>
+
+        <!-- 里程碑 -->
+        <div class="flex justify-between mt-8">
+          <div class="text-center">
+            <div class="w-16 h-16 clay-card bg-green-200 rounded-full flex items-center justify-center mb-2 text-2xl" aria-label="初级已完成">
+              ✓
+            </div>
+            <p class="text-sm text-indigo-700 font-semibold">初级</p>
+            <p class="text-xs text-indigo-500">已完成</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 clay-card bg-blue-200 rounded-full flex items-center justify-center mb-2 text-2xl" aria-label="中级已完成">
+              ✓
+            </div>
+            <p class="text-sm text-indigo-700 font-semibold">中级</p>
+            <p class="text-xs text-indigo-500">已完成</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 clay-card bg-purple-200 rounded-full flex items-center justify-center mb-2 text-2xl" aria-label="高级进行中">
+              🎯
+            </div>
+            <p class="text-sm text-indigo-700 font-semibold">高级</p>
+            <p class="text-xs text-indigo-500">进行中</p>
+          </div>
+          <div class="text-center opacity-50">
+            <div class="w-16 h-16 clay-card bg-gray-200 rounded-full flex items-center justify-center mb-2 text-2xl" aria-label="专家未开始">
+              🏆
+            </div>
+            <p class="text-sm text-indigo-700 font-semibold">专家</p>
+            <p class="text-xs text-indigo-500">未开始</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 排行榜 -->
+  <section id="leaderboard" class="py-16 px-4 bg-gradient-to-br from-purple-50 to-indigo-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl font-bold text-center mb-12 text-indigo-900">
+        🏆 排行榜
+      </h2>
+
+      <div class="space-y-4">
+        <!-- 第1名 -->
+        <div class="clay-card p-6 bg-gradient-to-r from-yellow-200 to-yellow-300">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl" aria-hidden="true">🥇</div>
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600" aria-hidden="true"></div>
+              <div>
+                <p class="font-bold text-lg text-indigo-900">小明</p>
+                <p class="text-sm text-indigo-700">连续答对 50 题</p>
+              </div>
+            </div>
+            <div class="text-2xl font-bold text-indigo-900">9,850 分</div>
+          </div>
+        </div>
+
+        <!-- 第2名 -->
+        <div class="clay-card p-6 bg-gradient-to-r from-gray-200 to-gray-300">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl" aria-hidden="true">🥈</div>
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600" aria-hidden="true"></div>
+              <div>
+                <p class="font-bold text-lg text-indigo-900">小红</p>
+                <p class="text-sm text-indigo-700">连续答对 45 题</p>
+              </div>
+            </div>
+            <div class="text-2xl font-bold text-indigo-900">8,720 分</div>
+          </div>
+        </div>
+
+        <!-- 第3名 -->
+        <div class="clay-card p-6 bg-gradient-to-r from-orange-200 to-orange-300">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl" aria-hidden="true">🥉</div>
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600" aria-hidden="true"></div>
+              <div>
+                <p class="font-bold text-lg text-indigo-900">小刚</p>
+                <p class="text-sm text-indigo-700">连续答对 40 题</p>
+              </div>
+            </div>
+            <div class="text-2xl font-bold text-indigo-900">7,650 分</div>
+          </div>
+        </div>
+
+        <!-- 第4名 -->
+        <div class="clay-card p-4 bg-white">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-2xl font-bold text-indigo-600 w-8">4</div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600" aria-hidden="true"></div>
+              <div>
+                <p class="font-semibold text-indigo-900">小丽</p>
+              </div>
+            </div>
+            <div class="text-xl font-bold text-indigo-900">6,540 分</div>
+          </div>
+        </div>
+
+        <!-- 第5名 -->
+        <div class="clay-card p-4 bg-white">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-2xl font-bold text-indigo-600 w-8">5</div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600" aria-hidden="true"></div>
+              <div>
+                <p class="font-semibold text-indigo-900">小华</p>
+              </div>
+            </div>
+            <div class="text-xl font-bold text-indigo-900">5,890 分</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 报名CTA区域 -->
+  <section id="cta" class="py-20 px-4 bg-gradient-to-r from-orange-400 to-pink-500">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        准备好开始你的学习冒险了吗?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        加入 10,000+ 学生,让学习变得更有趣!
+      </p>
+      <button class="clay-button bg-white text-orange-600 text-xl px-12 py-4 font-bold hover:scale-105 transition-transform animate-pulse-slow" aria-label="免费注册">
+        免费注册 →
+      </button>
+      <p class="text-sm text-white/80 mt-4">
+        无需信用卡 · 立即开始
+      </p>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="py-8 px-4 bg-indigo-900 text-white text-center">
+    <p class="text-sm">
+      © 2026 趣味答题平台. 让学习变得更有趣!
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="assets/js/animations.js"></script>
+
+</body>
+</html>
