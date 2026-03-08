@@ -146,10 +146,17 @@ function loadQuestion() {
   elements.questionNumber.textContent = gameState.currentQuestion + 1;
   elements.questionText.textContent = question.question;
 
-  // 更新进度
+  // 更新进度（支持国际化）
   const progress = ((gameState.currentQuestion + 1) / gameState.questions.length) * 100;
   elements.progressBar.style.width = progress + '%';
-  elements.progressText.textContent = `第 ${gameState.currentQuestion + 1} 题 / 共 ${gameState.questions.length} 题`;
+
+  // 使用国际化文本更新进度
+  const lang = window.langManager;
+  if (lang) {
+    elements.progressText.innerHTML = `<span data-i18n="questionOf">${lang.t('questionOf')}</span> ${gameState.currentQuestion + 1} <span data-i18n="totalQuestions">${lang.t('totalQuestions')}</span> ${gameState.questions.length} <span data-i18n="questions">${lang.t('questions')}</span>`;
+  } else {
+    elements.progressText.textContent = `第 ${gameState.currentQuestion + 1} 题 / 共 ${gameState.questions.length} 题`;
+  }
 
   // 生成选项
   elements.optionsContainer.innerHTML = '';
@@ -280,18 +287,21 @@ function submitAnswer() {
 function showFeedback(isCorrect, question) {
   elements.feedback.classList.remove('hidden');
 
+  const lang = window.langManager;
+
   if (isCorrect) {
     elements.feedbackIcon.textContent = '🎉';
-    elements.feedbackTitle.textContent = '回答正确!';
+    elements.feedbackTitle.textContent = lang ? lang.t('correct_feedback') : '回答正确!';
     elements.feedbackTitle.className = 'text-2xl font-bold mb-2 text-green-700';
     elements.feedbackMessage.textContent = question.explanation;
     elements.feedbackMessage.className = 'text-lg text-green-600';
     elements.feedback.className = 'clay-card p-6 mb-6 text-center bg-gradient-to-r from-green-100 to-emerald-100';
   } else {
     elements.feedbackIcon.textContent = '😅';
-    elements.feedbackTitle.textContent = '答错了,继续加油!';
+    elements.feedbackTitle.textContent = lang ? lang.t('wrong_feedback') : '答错了,继续加油!';
     elements.feedbackTitle.className = 'text-2xl font-bold mb-2 text-orange-700';
-    elements.feedbackMessage.textContent = '正确答案: ' + question.explanation;
+    const correctAnswerPrefix = lang && lang.currentLang === 'en' ? 'Correct answer: ' : '正确答案: ';
+    elements.feedbackMessage.textContent = correctAnswerPrefix + question.explanation;
     elements.feedbackMessage.className = 'text-lg text-orange-600';
     elements.feedback.className = 'clay-card p-6 mb-6 text-center bg-gradient-to-r from-orange-100 to-yellow-100';
   }
@@ -356,29 +366,31 @@ function showResults() {
   const totalTime = Math.floor((Date.now() - gameState.startTime) / 1000);
   const accuracy = Math.round((gameState.correctCount / gameState.questions.length) * 100);
 
+  const lang = window.langManager;
+
   // 更新结果数据
   elements.finalScore.textContent = gameState.score;
-  elements.accuracy.textContent = `正确率: ${accuracy}%`;
+  elements.accuracy.innerHTML = `<span data-i18n="accuracy">${lang ? lang.t('accuracy') : '正确率'}</span>: ${accuracy}%`;
   elements.correctCount.textContent = gameState.correctCount;
   elements.wrongCount.textContent = gameState.wrongCount;
   elements.timeSpent.textContent = totalTime;
 
-  // 根据得分显示不同的emoji
+  // 根据得分显示不同的emoji和标题
   let emoji = '🎉';
-  let title = '恭喜完成!';
+  let title = lang ? lang.t('congratulations') : '恭喜完成!';
 
   if (accuracy === 100) {
     emoji = '🏆';
-    title = '完美!全部答对!';
+    title = lang && lang.currentLang === 'en' ? 'Perfect! All Correct!' : '完美!全部答对!';
   } else if (accuracy >= 80) {
     emoji = '🎉';
-    title = '太棒了!';
+    title = lang && lang.currentLang === 'en' ? 'Excellent!' : '太棒了!';
   } else if (accuracy >= 60) {
     emoji = '👍';
-    title = '不错哦!';
+    title = lang && lang.currentLang === 'en' ? 'Good Job!' : '不错哦!';
   } else {
     emoji = '💪';
-    title = '继续努力!';
+    title = lang && lang.currentLang === 'en' ? 'Keep Trying!' : '继续努力!';
   }
 
   document.getElementById('result-emoji').textContent = emoji;
