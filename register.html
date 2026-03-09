@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="趣味答题平台 - 用户注册">
+  <title>注册 - 趣味答题平台</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 自定义CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-purple-50 min-h-screen flex items-center justify-center p-4">
+
+  <!-- 注册卡片 -->
+  <div class="w-full max-w-md">
+    <!-- Logo和标题 -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-indigo-900 mb-2" data-i18n="registerTitle">🎯 加入我们</h1>
+      <p class="text-indigo-600" data-i18n="registerSubtitle">创建账号开始学习之旅</p>
+    </div>
+
+    <!-- 注册表单卡片 -->
+    <div class="clay-card p-8 bg-white">
+      <form id="register-form" class="space-y-4">
+        <!-- 手机号 -->
+        <div>
+          <label for="reg-phone" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="phoneNumber">
+            手机号码
+          </label>
+          <input
+            type="tel"
+            id="reg-phone"
+            name="phone"
+            class="w-full px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors"
+            placeholder="请输入手机号码"
+            data-i18n-placeholder="phonePlaceholder"
+            maxlength="11"
+            required
+          >
+          <p class="text-xs text-indigo-500 mt-1" data-i18n="phoneHint">用于接收验证码和账号找回</p>
+        </div>
+
+        <!-- 验证码 -->
+        <div>
+          <label for="reg-code" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="verificationCode">
+            验证码
+          </label>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              id="reg-code"
+              name="code"
+              class="flex-1 px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors"
+              placeholder="请输入验证码"
+              data-i18n-placeholder="codePlaceholder"
+              maxlength="6"
+              required
+            >
+            <button
+              type="button"
+              id="send-reg-code-btn"
+              class="clay-button bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-3 font-semibold whitespace-nowrap"
+              data-i18n="sendCode"
+            >
+              发送验证码
+            </button>
+          </div>
+        </div>
+
+        <!-- 用户名 -->
+        <div>
+          <label for="reg-username" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="usernameLabel">
+            用户名
+          </label>
+          <input
+            type="text"
+            id="reg-username"
+            name="username"
+            class="w-full px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors"
+            placeholder="请输入用户名"
+            data-i18n-placeholder="usernameRegPlaceholder"
+            minlength="3"
+            maxlength="20"
+            required
+          >
+          <p class="text-xs text-indigo-500 mt-1" data-i18n="usernameHint">3-20个字符,支持中英文、数字</p>
+        </div>
+
+        <!-- 密码 -->
+        <div>
+          <label for="reg-password" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="password">
+            密码
+          </label>
+          <div class="relative">
+            <input
+              type="password"
+              id="reg-password"
+              name="password"
+              class="w-full px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors pr-12"
+              placeholder="请输入密码"
+              data-i18n-placeholder="passwordPlaceholder"
+              minlength="6"
+              required
+            >
+            <button
+              type="button"
+              id="toggle-reg-password"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-indigo-400 hover:text-indigo-600 transition-colors"
+              aria-label="显示/隐藏密码"
+            >
+              <span id="reg-eye-icon">👁️</span>
+            </button>
+          </div>
+          <p class="text-xs text-indigo-500 mt-1" data-i18n="passwordHint">至少6个字符</p>
+        </div>
+
+        <!-- 确认密码 -->
+        <div>
+          <label for="reg-confirm-password" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="confirmPassword">
+            确认密码
+          </label>
+          <div class="relative">
+            <input
+              type="password"
+              id="reg-confirm-password"
+              name="confirmPassword"
+              class="w-full px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors pr-12"
+              placeholder="请再次输入密码"
+              data-i18n-placeholder="confirmPasswordPlaceholder"
+              minlength="6"
+              required
+            >
+            <button
+              type="button"
+              id="toggle-confirm-password"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-indigo-400 hover:text-indigo-600 transition-colors"
+              aria-label="显示/隐藏密码"
+            >
+              <span id="confirm-eye-icon">👁️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 用户协议 -->
+        <div class="flex items-start gap-2">
+          <input
+            type="checkbox"
+            id="agree-terms"
+            class="w-4 h-4 mt-1 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500"
+            required
+          >
+          <label for="agree-terms" class="text-sm text-indigo-700">
+            <span data-i18n="agreeToTerms">我已阅读并同意</span>
+            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold" data-i18n="userAgreement">《用户协议》</a>
+            <span data-i18n="and">和</span>
+            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold" data-i18n="privacyPolicy">《隐私政策》</a>
+          </label>
+        </div>
+
+        <!-- 注册按钮 -->
+        <button
+          type="submit"
+          class="w-full clay-button bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 text-lg font-bold"
+          data-i18n="registerButton"
+        >
+          注册
+        </button>
+      </form>
+
+      <!-- 分隔线 -->
+      <div class="relative my-6">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-indigo-200"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-4 bg-white text-indigo-500" data-i18n="orRegisterWith">或使用以下方式注册</span>
+        </div>
+      </div>
+
+      <!-- 第三方注册 -->
+      <div class="grid grid-cols-3 gap-3">
+        <button class="clay-card p-3 hover:scale-105 transition-transform flex items-center justify-center" aria-label="微信注册">
+          <span class="text-2xl">💬</span>
+        </button>
+        <button class="clay-card p-3 hover:scale-105 transition-transform flex items-center justify-center" aria-label="QQ注册">
+          <span class="text-2xl">🐧</span>
+        </button>
+        <button class="clay-card p-3 hover:scale-105 transition-transform flex items-center justify-center" aria-label="微博注册">
+          <span class="text-2xl">📱</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 登录链接 -->
+    <div class="text-center mt-6">
+      <p class="text-indigo-700">
+        <span data-i18n="alreadyHaveAccount">已有账号?</span>
+        <a href="login.html" class="font-bold text-indigo-600 hover:text-indigo-800 ml-2" data-i18n="loginNow">
+          立即登录 →
+        </a>
+      </p>
+    </div>
+
+    <!-- 返回首页 -->
+    <div class="text-center mt-4">
+      <a href="index.html" class="text-indigo-500 hover:text-indigo-700 text-sm" data-i18n="backToHome">
+        ← 返回首页
+      </a>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/auth.js"></script>
+
+</body>
+</html>

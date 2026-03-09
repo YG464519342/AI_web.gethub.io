@@ -81,7 +81,47 @@ const translations = {
     correct_feedback: '回答正确!',
     wrong_feedback: '回答错误',
     correct_message: '太棒了!继续保持!',
-    wrong_message: '没关系,继续加油!'
+    wrong_message: '没关系,继续加油!',
+
+    // 登录页面
+    loginTitle: '🎯 欢迎回来',
+    loginSubtitle: '登录开始你的学习之旅',
+    phoneLogin: '手机登录',
+    passwordLogin: '密码登录',
+    phoneNumber: '手机号码',
+    phonePlaceholder: '请输入手机号码',
+    verificationCode: '验证码',
+    codePlaceholder: '请输入验证码',
+    sendCode: '发送验证码',
+    loginButton: '登录',
+    username: '用户名/手机号',
+    usernamePlaceholder: '请输入用户名或手机号',
+    password: '密码',
+    passwordPlaceholder: '请输入密码',
+    rememberMe: '记住我',
+    forgotPassword: '忘记密码?',
+    orLoginWith: '或使用以下方式登录',
+    noAccount: '还没有账号?',
+    registerNow: '立即注册 →',
+
+    // 注册页面
+    registerTitle: '🎯 加入我们',
+    registerSubtitle: '创建账号开始学习之旅',
+    phoneHint: '用于接收验证码和账号找回',
+    usernameLabel: '用户名',
+    usernameRegPlaceholder: '请输入用户名',
+    usernameHint: '3-20个字符,支持中英文、数字',
+    passwordHint: '至少6个字符',
+    confirmPassword: '确认密码',
+    confirmPasswordPlaceholder: '请再次输入密码',
+    agreeToTerms: '我已阅读并同意',
+    userAgreement: '《用户协议》',
+    and: '和',
+    privacyPolicy: '《隐私政策》',
+    registerButton: '注册',
+    orRegisterWith: '或使用以下方式注册',
+    alreadyHaveAccount: '已有账号?',
+    loginNow: '立即登录 →'
   },
 
   en: {
@@ -165,7 +205,47 @@ const translations = {
     correct_feedback: 'Correct!',
     wrong_feedback: 'Incorrect',
     correct_message: 'Great job! Keep it up!',
-    wrong_message: 'No worries, keep trying!'
+    wrong_message: 'No worries, keep trying!',
+
+    // Login Page
+    loginTitle: '🎯 Welcome Back',
+    loginSubtitle: 'Login to start your learning journey',
+    phoneLogin: 'Phone Login',
+    passwordLogin: 'Password Login',
+    phoneNumber: 'Phone Number',
+    phonePlaceholder: 'Enter phone number',
+    verificationCode: 'Verification Code',
+    codePlaceholder: 'Enter verification code',
+    sendCode: 'Send Code',
+    loginButton: 'Login',
+    username: 'Username/Phone',
+    usernamePlaceholder: 'Enter username or phone',
+    password: 'Password',
+    passwordPlaceholder: 'Enter password',
+    rememberMe: 'Remember me',
+    forgotPassword: 'Forgot password?',
+    orLoginWith: 'Or login with',
+    noAccount: "Don't have an account?",
+    registerNow: 'Register Now →',
+
+    // Register Page
+    registerTitle: '🎯 Join Us',
+    registerSubtitle: 'Create an account to start learning',
+    phoneHint: 'For verification and account recovery',
+    usernameLabel: 'Username',
+    usernameRegPlaceholder: 'Enter username',
+    usernameHint: '3-20 characters, letters and numbers',
+    passwordHint: 'At least 6 characters',
+    confirmPassword: 'Confirm Password',
+    confirmPasswordPlaceholder: 'Enter password again',
+    agreeToTerms: 'I have read and agree to',
+    userAgreement: 'Terms of Service',
+    and: 'and',
+    privacyPolicy: 'Privacy Policy',
+    registerButton: 'Register',
+    orRegisterWith: 'Or register with',
+    alreadyHaveAccount: 'Already have an account?',
+    loginNow: 'Login Now →'
   }
 };
 
@@ -229,6 +309,12 @@ class LanguageManager {
     document.querySelectorAll('[data-i18n-html]').forEach(element => {
       const key = element.getAttribute('data-i18n-html');
       element.innerHTML = this.t(key);
+    });
+
+    // 更新带 data-i18n-placeholder 属性的元素
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+      const key = element.getAttribute('data-i18n-placeholder');
+      element.placeholder = this.t(key);
     });
   }
 

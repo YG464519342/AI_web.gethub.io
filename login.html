@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="趣味答题平台 - 用户登录">
+  <title>登录 - 趣味答题平台</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 自定义CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-purple-50 min-h-screen flex items-center justify-center p-4">
+
+  <!-- 登录卡片 -->
+  <div class="w-full max-w-md">
+    <!-- Logo和标题 -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-indigo-900 mb-2" data-i18n="loginTitle">🎯 欢迎回来</h1>
+      <p class="text-indigo-600" data-i18n="loginSubtitle">登录开始你的学习之旅</p>
+    </div>
+
+    <!-- 登录表单卡片 -->
+    <div class="clay-card p-8 bg-white">
+      <!-- 切换登录方式的标签页 -->
+      <div class="flex gap-2 mb-6">
+        <button id="tab-phone" class="flex-1 py-3 px-4 rounded-lg font-semibold transition-all bg-gradient-to-r from-indigo-500 to-purple-500 text-white" data-i18n="phoneLogin">
+          手机登录
+        </button>
+        <button id="tab-password" class="flex-1 py-3 px-4 rounded-lg font-semibold transition-all bg-indigo-100 text-indigo-700 hover:bg-indigo-200" data-i18n="passwordLogin">
+          密码登录
+        </button>
+      </div>
+
+      <!-- 手机验证码登录表单 -->
+      <form id="phone-login-form" class="space-y-4">
+        <div>
+          <label for="phone" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="phoneNumber">
+            手机号码
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="w-full px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors"
+            placeholder="请输入手机号码"
+            data-i18n-placeholder="phonePlaceholder"
+            maxlength="11"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="code" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="verificationCode">
+            验证码
+          </label>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              id="code"
+              name="code"
+              class="flex-1 px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors"
+              placeholder="请输入验证码"
+              data-i18n-placeholder="codePlaceholder"
+              maxlength="6"
+              required
+            >
+            <button
+              type="button"
+              id="send-code-btn"
+              class="clay-button bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-3 font-semibold whitespace-nowrap"
+              data-i18n="sendCode"
+            >
+              发送验证码
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full clay-button bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 text-lg font-bold"
+          data-i18n="loginButton"
+        >
+          登录
+        </button>
+      </form>
+
+      <!-- 账号密码登录表单 -->
+      <form id="password-login-form" class="space-y-4 hidden">
+        <div>
+          <label for="username" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="username">
+            用户名/手机号
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="w-full px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors"
+            placeholder="请输入用户名或手机号"
+            data-i18n-placeholder="usernamePlaceholder"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-semibold text-indigo-900 mb-2" data-i18n="password">
+            密码
+          </label>
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="w-full px-4 py-3 rounded-lg border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none transition-colors pr-12"
+              placeholder="请输入密码"
+              data-i18n-placeholder="passwordPlaceholder"
+              required
+            >
+            <button
+              type="button"
+              id="toggle-password"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-indigo-400 hover:text-indigo-600 transition-colors"
+              aria-label="显示/隐藏密码"
+            >
+              <span id="eye-icon">👁️</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="remember" class="w-4 h-4 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500">
+            <span class="text-indigo-700" data-i18n="rememberMe">记住我</span>
+          </label>
+          <a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold" data-i18n="forgotPassword">
+            忘记密码?
+          </a>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full clay-button bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 text-lg font-bold"
+          data-i18n="loginButton"
+        >
+          登录
+        </button>
+      </form>
+
+      <!-- 分隔线 -->
+      <div class="relative my-6">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-indigo-200"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-4 bg-white text-indigo-500" data-i18n="orLoginWith">或使用以下方式登录</span>
+        </div>
+      </div>
+
+      <!-- 第三方登录 -->
+      <div class="grid grid-cols-3 gap-3">
+        <button class="clay-card p-3 hover:scale-105 transition-transform flex items-center justify-center" aria-label="微信登录">
+          <span class="text-2xl">💬</span>
+        </button>
+        <button class="clay-card p-3 hover:scale-105 transition-transform flex items-center justify-center" aria-label="QQ登录">
+          <span class="text-2xl">🐧</span>
+        </button>
+        <button class="clay-card p-3 hover:scale-105 transition-transform flex items-center justify-center" aria-label="微博登录">
+          <span class="text-2xl">📱</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 注册链接 -->
+    <div class="text-center mt-6">
+      <p class="text-indigo-700">
+        <span data-i18n="noAccount">还没有账号?</span>
+        <a href="register.html" class="font-bold text-indigo-600 hover:text-indigo-800 ml-2" data-i18n="registerNow">
+          立即注册 →
+        </a>
+      </p>
+    </div>
+
+    <!-- 返回首页 -->
+    <div class="text-center mt-4">
+      <a href="index.html" class="text-indigo-500 hover:text-indigo-700 text-sm" data-i18n="backToHome">
+        ← 返回首页
+      </a>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/auth.js"></script>
+
+</body>
+</html>

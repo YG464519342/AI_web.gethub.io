@@ -20,8 +20,28 @@
 </head>
 <body class="bg-indigo-50">
 
+  <!-- 顶部导航栏 -->
+  <nav class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-indigo-200">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🎯</span>
+          <span class="font-bold text-lg text-indigo-900" data-i18n="heroTitle">趣味答题平台</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="login.html" class="clay-button bg-white text-indigo-600 px-4 py-2 text-sm font-semibold hover:scale-105 transition-transform" data-i18n="loginButton">
+            登录
+          </a>
+          <a href="register.html" class="clay-button bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 text-sm font-semibold hover:scale-105 transition-transform" data-i18n="registerButton">
+            注册
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <!-- Hero区域 -->
-  <section id="hero" class="hero min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-50">
+  <section id="hero" class="hero min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-50 pt-16">
     <div class="container mx-auto px-4 text-center z-10">
       <h1 id="hero-heading" class="text-5xl md:text-7xl font-bold text-indigo-900 mb-6 animate-bounce-in" data-i18n="heroTitle">
         🎯 趣味答题平台
